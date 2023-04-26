@@ -17,6 +17,7 @@
 }
 
 Start() {
+    LogMsg(join(featuredInstaList))
     while WinActive("BloonsTD6") {
         switch CheckMenuState() {
             case "home":
@@ -99,6 +100,12 @@ SelectGameScript() {
 }
 
 OpenBoxes() {
+    if (featuredInstaList) {
+        Sleep(5000)
+        for x in featuredInstaList{
+            ClickImage("featured\" x)
+        }
+    }
     ClickImage("buttons\collect", 2000)
     LogMsg("Opening boxes")
     while !SearchImage("states\event") {
